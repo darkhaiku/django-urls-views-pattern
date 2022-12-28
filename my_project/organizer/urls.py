@@ -2,9 +2,10 @@
 
 from django.urls import path
 
-from .views import tag_detail, tag_list
+from .views import TagDetail, TagList
 
 urlpatterns = [
-    path('tag/', tag_list, name='tag_list'),
-    path('tag/<str:slug>/', tag_detail, name='tag_detail'),
+    path('tag/', TagList.as_view(), name='tag_list'),
+
+    path('tag/<str:slug>/', TagDetail.as_view(), name='tag_detail'),
 ]
