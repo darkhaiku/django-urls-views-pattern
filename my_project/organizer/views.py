@@ -1,26 +1,23 @@
 # {{seccond:2}}
 
-from django.shortcuts import get_object_or_404,render
+from django.shortcuts import get_object_or_404
 
-# django class based views.
-from django.views import View
+# Generic class base views!
+# it looks like magic
+from django.views.generic import DetailView, ListView
 
 from .models import Tag
 
 # Create your views here.
 
 
-class TagList(View):
-    def get(self, request):
-        tag_list = Tag.objects.all()
-        # context = statement 
-        # "tag_list" used in the html file 
-        context = {"tag_list": tag_list}
-        return render(request, "tag/list.html", context)
+class TagList(ListView):
+
+    queryset = Tag.objects.all()
+    template_name = "tag/list.html"
 
 
-class TagDetail(View):
-    def get(self, request, slug):
-        tag = get_object_or_404(Tag, slug=slug)
-        context = {"tag": tag}
-        return render(request, "tag/detial.html", context)
+class TagDetail(DetailView):
+
+    queryset = Tag.objects.all()
+    template_name = "tag/detail.html"
