@@ -1,3 +1,5 @@
+#{{4th}}
+
 """my_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,9 +17,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-# from organizer import urls as organizer_urls
+from organizer import urls as organizer_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path("", include(organizer_urls)),
+    path("", include(organizer_urls)),
 ]
